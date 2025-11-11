@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        ::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="min-h-screen bg-zinc-900 w-full flex flex-col items-center">
+        <div class="form bg-zinc-800 p-8 rounded-lg shadow-lg w-full h-full max-w-md mt-10">
+            <form action="/create" method="post" class="space-y-4">
+                <input type="text" placeholder="Place your title here" name="title"
+                    class="w-full p-3 bg-zinc-700 text-white rounded-md border border-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <textarea placeholder="Write your task done here" name="details" id=""
+                    class="w-full p-3 bg-zinc-700 text-white rounded-md border border-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500 h-32 resize-none"></textarea>
+                <input type="submit" value="Add Task"
+                    class="w-full p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200 cursor-pointer">
+            </form>
+        </div>
+
+        <div class="mt-10 w-full overflow-x-auto">
+            <div class="flex flex-nowrap space-x-4 p-4">
+                <% if (files && files.length> 0) { %>
+                    <% files.forEach(file=> { %>
+                        <div
+                            class="bg-zinc-700 text-white p-4 rounded-lg shadow-md w-64 flex-shrink-0 border border-zinc-600 hover:shadow-lg hover:bg-zinc-600 transition duration-200">
+                            <h1 class="font-bold mb-2">
+                                <%= file %>
+                            </h1>
+                            <div class="flex justify-between items-center mt-3">
+                                <!-- Read More -->
+                                <a href="/file/<%= file.replace('.txt', '') %>"
+                                    class="text-blue-400 hover:text-blue-300 underline">
+                                    Read More
+                                </a>
+
+                                <!-- Edit -->
+                                <a href="/file/<%= file.replace('.txt', '') %>/edit"
+                                    class="text-yellow-400 hover:text-yellow-300 underline">
+                                    Edit
+                                </a>
+                            </div>
+
+                        </div>
+                        <% }) %>
+                            <% } else { %>
+                                <p class="text-zinc-400">No Taks yet.</p>
+                                <% } %>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

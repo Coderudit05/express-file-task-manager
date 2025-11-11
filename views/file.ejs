@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= fileName %> - Details</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-zinc-900 text-white min-h-screen flex flex-col items-center p-8">
+  
+  <div class="bg-zinc-800 p-6 rounded-lg shadow-lg w-full max-w-2xl">
+    <h1 class="text-2xl font-bold text-blue-400 mb-4"><%= fileName %>.txt</h1>
+    <pre class="bg-zinc-700 text-white p-4 rounded-md border border-zinc-600 whitespace-pre-wrap"><%= data %></pre>
+  </div>
+
+  <a href="/page" class="mt-6 text-blue-400 hover:text-blue-300 underline">⬅ Back to Tasks</a>
+</body>
+</html>

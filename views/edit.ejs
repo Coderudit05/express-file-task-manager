@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit - <%= fileName %></title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-900 text-white min-h-screen flex flex-col items-center justify-center p-8">
+  <div class="bg-zinc-800 p-6 rounded-lg shadow-lg w-full max-w-2xl">
+    <h1 class="text-2xl font-bold mb-4 text-blue-400">Edit Task</h1>
+
+    <form action="/file/<%= fileName %>/edit" method="post" class="space-y-4">
+      <!-- Editable Title -->
+      <div>
+        <label class="block text-sm mb-2 text-zinc-400">Task Title</label>
+        <input type="text" name="title" value="<%= fileName %>"
+               class="w-full p-3 bg-zinc-700 rounded-md border border-zinc-600 focus:ring-2 focus:ring-blue-500" required />
+      </div>
+
+      <!-- Editable Content -->
+      <div>
+        <label class="block text-sm mb-2 text-zinc-400">Task Details</label>
+        <textarea name="content" rows="10"
+                  class="w-full p-3 bg-zinc-700 rounded-md border border-zinc-600 focus:ring-2 focus:ring-blue-500 resize-none"
+                  required><%= content %></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-between">
+        <button type="submit"
+                class="bg-blue-600 px-5 py-2 rounded-md hover:bg-blue-700 transition">
+          💾 Save Changes
+        </button>
+        <a href="/file/<%= fileName %>"
+           class="text-zinc-400 hover:text-zinc-200 underline">
+          ← Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
